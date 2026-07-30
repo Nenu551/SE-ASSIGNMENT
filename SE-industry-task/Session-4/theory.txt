@@ -1,0 +1,36 @@
+1. List all 6 phases of SDLC in order with one line about each.
+Answer:- 
+        Phase	                                                Description
+1. Requirement                                      Analysis	Gather and understand the project requirements from the client or stakeholders.
+2. Planning	                                        Estimate cost, time, resources, and create the project plan.
+3. Design	                                        Design the system architecture, database, and user interface.
+4. Development (Implementation)	                    Write the code and build the software based on the design.
+5. Testing	                                        Test the software to find and fix bugs before release.
+6. Deployment & Maintenance	                        Release the software to users and provide updates, bug fixes, and improvements.
+
+
+2. Write 3 differences between Agile and Waterfall models.
+Answer:- 
+            Agile	                                                           Waterfall
+Development is done in small iterations (Sprints).	            Development is completed in one sequential process.
+Requirements can change during the project.	                    Requirements are fixed before development begins.
+Customer feedback is taken throughout the project.	            Customer feedback is usually taken after the final product is completed.
+
+3. Name the 3 main Scrum roles and write one line about the responsibility of each.
+Answer:- 
+Scrum Role	                                 Responsibility
+Product Owner	                    Defines product requirements, manages the Product Backlog, and prioritizes work.
+Scrum Master	                    Helps the team follow Scrum practices and removes obstacles affecting the team's progress.
+Development Team	                Designs, develops, tests, and delivers the product increment during each Sprint.
+
+4. What is a Sprint in Scrum? Mention its typical duration.
+Answer:- A Sprint is a fixed time period during which the Scrum team completes a set of planned tasks and delivers a working product increment.
+Typical Duration: 1 to 4 weeks (most commonly 2 weeks).
+
+5. What do these Jira board columns mean: To Do, In Progress, Done, Backlog?
+Answer:- 
+    Jira Column	                            Meaning
+Backlog	                            A list of tasks or user stories that are planned but not yet started.
+To Do	                            Tasks that are selected for the current Sprint and are ready to begin.
+In Progress	                        Tasks that are currently being worked on by the development team.
+Done	                            Tasks that have been completed, tested, and are ready or already delivered.

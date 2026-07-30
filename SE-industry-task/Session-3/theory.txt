@@ -1,0 +1,47 @@
+1. Write the full form and one-line use of: HTTP, HTTPS, FTP, SMTP.
+Answer:- 
+Term	            Full Form	                                                Use
+HTTP	    HyperText Transfer Protocol	            Used to transfer web pages and data between a browser and a web server.
+HTTPS	    HyperText Transfer Protocol Secure	    A secure version of HTTP that encrypts data exchanged between a browser and a web server.
+FTP	        File Transfer Protocol	                Used to upload and download files between a computer and a server.
+SMTP	    Simple Mail Transfer Protocol	        Used to send emails from one mail server to another.
+
+2. What is the difference between IPv4 and IPv6? (2 lines)
+Answer:- 
+IPv4        uses        32-bit addresses (e.g., 192.168.1.1) and supports about 4.3 billion unique addresses.
+IPv6        uses        128-bit addresses (e.g., 2001:db8::1) and provides a much larger number of unique IP addresses.
+
+3. Run nslookup google.com on your system and write down the IP address you get.
+Answer:- 
+On Windows
+nslookup google.com
+Example:- output
+Name:    google.com
+Addresses:  2404:6800:4000:1017::71
+
+4. What do these HTTP status codes mean?
+Answer:- 
+Status Code	                                             Meaning
+200 OK	                                The request was successful, and the server returned the requested resource.
+301 Moved Permanently	                The requested resource has been permanently moved to a new URL.
+403 Forbidden	                        The server understands the request but refuses to allow access.
+404 Not Found	                        The requested page or resource could not be found on the server.
+500 Internal Server Error	            The server encountered an unexpected error while processing the request.
+
+5. Explain DNS hierarchy (root, TLD, domain, subdomain) with www.google.com as an example.
+Answer:- 
+The DNS hierarchy translates a domain name into an IP address by organizing names in different levels.
+Using www.google.com as an example:
+DNS                                Level	                                    Example	Description
+Root	                        .(implicit)	                        The highest level of the DNS hierarchy.
+TLD (Top-Level Domain)	        .com	                            The top-level domain that identifies the domain category.
+Domain	                        google	                            The registered domain name owned by Google.
+Subdomain	                    www	                                A subdomain used to access Google's website.
+
+Root (.)
+   │
+  .com          ← Top-Level Domain (TLD)
+   │
+ google         ← Domain
+   │
+   www          ← Subdomain

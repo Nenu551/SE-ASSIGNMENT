@@ -1,0 +1,69 @@
+1. Write the Git command for each.
+Answer:- 
+Task	                                                    Git Command
+Initialize a Git repository	                                 git init
+Stage all files	                                             git add .
+Commit with a message	                                     git commit -m "Initial commit"
+Push to remote repository	                                 git push origin main
+Pull the latest changes	                                     git pull origin main
+
+2. What is the difference between git fetch and git pull? (2 lines)
+Answer:- 
+git fetch downloads the latest changes from the remote repository but does not merge them into your current branch.
+git pull downloads the latest changes and automatically merges them into your current branch.
+
+3. Create a new GitHub repository, push any small text file from your local system, and share the repo link.
+Answer:- 
+
+Step 1: Create a new repository on GitHub
+Log in to GitHub.
+Click New Repository.
+Give it a name (for example, git-practice).
+Click Create Repository.
+
+Step 2: Create a text file
+Create a file named hello.txt.
+Example content:
+Hello GitHub!
+This is my first repository.
+
+Step 3: Run the following commands
+git init
+git add .
+git commit -m "Add hello.txt"
+git branch -M main
+git remote add origin https://github.com/your-username/git-practice.git
+git push -u origin main
+
+Step 4: Share the repository link
+Example:
+https://github.com/your-username/git-practice
+
+Replace your-username with your actual GitHub username.
+
+
+4. What is the difference between a Fork and a Pull Request? (2 lines)
+Answer:- 
+Fork: A fork is a personal copy of someone else's repository in your own GitHub account, allowing you to make changes independently.
+Pull Request (PR): A pull request is a request to merge your changes from a branch or fork into another repository after review.
+
+5. Create a new branch named feature-test, make one commit on it, and merge it back to the main branch. Write the commands you used.
+Answer:- 
+
+# Create and switch to a new branch
+git checkout -b feature-test
+
+# Make changes to a file
+git add .
+
+# Commit the changes
+git commit -m "Added feature test changes"
+
+# Switch back to the main branch
+git checkout main
+
+# Merge the feature-test branch into main
+git merge feature-test
+
+# (Optional) Delete the merged branch
+git branch -d feature-test
