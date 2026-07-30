@@ -1,0 +1,156 @@
+
+
+Question 1
+Answer:- 
+To maintain data accuracy and consistency, different constraints should be applied to specific columns.
+Example
+
+Restaurants Table
+
+Column	Constraint	Reason
+restaurant_id	PRIMARY KEY	Uniquely identifies each restaurant.
+name	NOT NULL	Every restaurant must have a name.
+
+Menu_Items Table
+
+Column	Constraint	Reason
+item_id	PRIMARY KEY	Gives each menu item a unique identity.
+restaurant_id	FOREIGN KEY	Connects the menu item to an existing restaurant.
+item_name	NOT NULL	Every menu item must have a name.
+Problems if constraints are not used
+Without PRIMARY KEY, duplicate IDs can exist, making records difficult to identify.
+Without NOT NULL, important information such as restaurant or menu item names may be missing.
+Without FOREIGN KEY, menu items may reference restaurants that do not exist, creating invalid (orphan) records.
+
+Therefore, these constraints ensure data integrity, consistency, and accuracy in the database.
+
+-----------------------------------------------*********************************----------------------------------------
+
+Question 2
+Answer
+
+The WHERE clause is used to specify which rows should be updated or deleted.
+
+For example:
+
+UPDATE orders
+SET status='Cancelled'
+WHERE status='Pending'
+AND order_date < CURDATE() - INTERVAL 7 DAY;
+DELETE FROM menu_items
+WHERE availability='Unavailable';
+Importance of WHERE
+It limits the operation to only the required records.
+It prevents accidental modification of the entire table.
+Problems without WHERE
+An UPDATE statement without WHERE updates every row.
+A DELETE statement without WHERE deletes every record from the table.
+This can result in permanent data loss and incorrect information.
+
+Hence, the WHERE clause is essential for safe UPDATE and DELETE operations.
+
+---------------------------------------------------------------**************************************-------------------------
+
+Question 3
+Answer
+
+To prepare the revenue report, the following SQL clauses and aggregate functions are required.
+
+SQL Clauses
+SELECT
+FROM
+WHERE
+GROUP BY
+HAVING
+Aggregate Functions
+SUM() – Calculates total revenue.
+AVG() – Calculates average order value.
+COUNT() – Counts the total number of orders.
+
+Example query:
+
+SELECT restaurant_id,
+SUM(total_amount) AS total_revenue,
+AVG(total_amount) AS average_order_value,
+COUNT(order_id) AS total_orders
+FROM orders
+WHERE MONTH(order_date)=MONTH(CURDATE())
+GROUP BY restaurant_id
+HAVING COUNT(order_id) > 20;
+Why HAVING instead of WHERE?
+
+The WHERE clause filters individual rows before grouping, whereas the HAVING clause filters grouped results after aggregate functions are calculated.
+
+Since the condition depends on COUNT(order_id), HAVING must be used.
+
+-----------------------------------------------------------------****************************************----------------------
+
+Question 4
+Answer
+INNER JOIN
+Returns only the records that have matching values in both tables.
+Orders without a matching restaurant will not appear in the result.
+LEFT JOIN
+Returns all records from the left table (orders).
+If no matching restaurant exists, the restaurant columns display NULL.
+Which JOIN should be used?
+
+LEFT JOIN should be used because the requirement is to display every order, even if its restaurant record has been removed.
+
+Difference
+INNER JOIN	LEFT JOIN
+Returns only matching records.	Returns all records from the left table and matching records from the right table.
+Non-matching records are excluded.	Non-matching records are shown with NULL values.
+
+Therefore, LEFT JOIN is the correct choice for this scenario.
+
+-------------------------------------------------------****************************************-----------------------------
+
+Question 5
+Answer
+
+A VIEW is a virtual table created from one or more database tables.
+
+Why is a VIEW preferred?
+It hides sensitive columns such as IDs from the front-end.
+It simplifies complex SQL queries.
+It improves database security.
+It provides a consistent data structure for developers.
+Limitations of a VIEW
+Some views cannot be updated directly.
+A view stores only the SQL query, not the actual data, so performance depends on the underlying tables.
+
+Therefore, using a VIEW improves security, simplifies development, and hides unnecessary details from users.
+
+---------------------------------------------------------------***********************************--------------------------
+
+Question 6
+Answer
+
+The database mechanism that prevents inconsistency is a Transaction.
+
+A transaction follows the ACID properties, ensuring that either all operations succeed or none are applied.
+
+COMMIT
+Saves all changes permanently to the database.
+Used when all operations are successful.
+ROLLBACK
+Cancels all changes made during the transaction.
+Used when an error occurs.
+SAVEPOINT
+Creates a checkpoint within a transaction.
+Allows rolling back to a specific point instead of cancelling the entire transaction.
+How they work together
+
+When a customer places an order:
+
+The wallet balance is deducted.
+A payment record is inserted.
+
+If both operations are successful, COMMIT permanently saves the changes.
+
+If the payment insertion fails, ROLLBACK restores the original wallet balance, ensuring no partial changes remain.
+
+If multiple operations are involved, SAVEPOINT can be used to return to a previous checkpoint without undoing the entire transaction.
+
+Thus, transactions maintain data consistency and prevent incomplete updates.

@@ -1,0 +1,93 @@
+```sql
+-- ============================================
+-- TASK 1: Design and Populate a Restaurant Database
+-- ============================================
+
+-- Step 1: Create Database
+CREATE DATABASE foodapp_db;
+
+-- Step 2: Use Database
+USE foodapp_db;
+
+-- Step 3: Create Restaurants Table
+CREATE TABLE restaurants (
+    restaurant_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    city VARCHAR(50),
+    cuisine_type VARCHAR(50),
+    rating DECIMAL(3,1)
+);
+
+-- Step 4: Insert Sample Records
+INSERT INTO restaurants (name, city, cuisine_type, rating)
+VALUES
+('Spice Villa', 'Ahmedabad', 'North Indian', 4.5),
+('Pizza Hub', 'Mumbai', 'Italian', 4.2),
+('Dragon Wok', 'Delhi', 'Chinese', 4.6),
+('Burger Town', 'Jaipur', 'Fast Food', 4.1),
+('Royal Biryani', 'Hyderabad', 'Mughlai', 4.8),
+('South Treat', 'Bengaluru', 'South Indian', 4.4);
+
+-- Step 5: Display All Records
+SELECT * FROM restaurants;
+
+-- Step 6: Update Rating of One Restaurant
+UPDATE restaurants
+SET rating = 4.9
+WHERE restaurant_id = 5;
+
+-- Verify Update
+SELECT * FROM restaurants;
+
+-- Step 7: Delete One Restaurant Using WHERE
+DELETE FROM restaurants
+WHERE restaurant_id = 4;
+
+-- Verify Deletion
+SELECT * FROM restaurants;
+
+-- Step 8: Retrieve Restaurants Sorted by Rating
+SELECT *
+FROM restaurants
+ORDER BY rating DESC;
+```
+
+### Expected Output
+
+**After INSERT**
+
+| restaurant_id | name          | city      | cuisine_type | rating |
+| ------------- | ------------- | --------- | ------------ | ------ |
+| 1             | Spice Villa   | Ahmedabad | North Indian | 4.5    |
+| 2             | Pizza Hub     | Mumbai    | Italian      | 4.2    |
+| 3             | Dragon Wok    | Delhi     | Chinese      | 4.6    |
+| 4             | Burger Town   | Jaipur    | Fast Food    | 4.1    |
+| 5             | Royal Biryani | Hyderabad | Mughlai      | 4.8    |
+| 6             | South Treat   | Bengaluru | South Indian | 4.4    |
+
+---
+
+**After UPDATE**
+
+Restaurant **Royal Biryani** rating becomes **4.9**.
+
+---
+
+**After DELETE**
+
+Restaurant **Burger Town** (restaurant_id = 4) is removed from the table.
+
+---
+
+**Final Output (ORDER BY rating DESC)**
+
+| restaurant_id | name          | city      | cuisine_type | rating |
+| ------------- | ------------- | --------- | ------------ | ------ |
+| 5             | Royal Biryani | Hyderabad | Mughlai      | 4.9    |
+| 3             | Dragon Wok    | Delhi     | Chinese      | 4.6    |
+| 1             | Spice Villa   | Ahmedabad | North Indian | 4.5    |
+| 6             | South Treat   | Bengaluru | South Indian | 4.4    |
+| 2             | Pizza Hub     | Mumbai    | Italian      | 4.2    |
+
+```
+```

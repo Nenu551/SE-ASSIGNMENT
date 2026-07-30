@@ -1,0 +1,186 @@
+```sql id="jb2j3v"
+-- ============================================
+-- TASK 3: Multi-Table JOINs and Menu Summary View
+-- ============================================
+
+-- Step 1: Use Database
+USE foodapp_db;
+
+-- ============================================
+-- Step 2: Create Restaurants Table
+-- (Drop existing table if required)
+-- ============================================
+
+DROP TABLE IF EXISTS menu_items;
+DROP TABLE IF EXISTS restaurants;
+
+CREATE TABLE restaurants (
+    restaurant_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    city VARCHAR(50),
+    cuisine_type VARCHAR(50)
+);
+
+-- ============================================
+-- Step 3: Insert Restaurant Records
+-- (Restaurant 5 has no menu items)
+-- ============================================
+
+INSERT INTO restaurants(name, city, cuisine_type)
+VALUES
+('Spice Villa', 'Ahmedabad', 'North Indian'),
+('Pizza Hub', 'Mumbai', 'Italian'),
+('Dragon Wok', 'Delhi', 'Chinese'),
+('Royal Biryani', 'Hyderabad', 'Mughlai'),
+('South Treat', 'Bengaluru', 'South Indian');
+
+-- ============================================
+-- Step 4: Create Menu Items Table
+-- ============================================
+
+CREATE TABLE menu_items (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    restaurant_id INT,
+    item_name VARCHAR(100) NOT NULL,
+    price DECIMAL(8,2),
+    category VARCHAR(50),
+    FOREIGN KEY (restaurant_id)
+    REFERENCES restaurants(restaurant_id)
+);
+
+-- ============================================
+-- Step 5: Insert Menu Items
+-- ============================================
+
+INSERT INTO menu_items
+(restaurant_id, item_name, price, category)
+VALUES
+-- Spice Villa
+(1,'Paneer Butter Masala',280,'Main Course'),
+(1,'Butter Naan',40,'Bread'),
+(1,'Veg Biryani',220,'Rice'),
+
+-- Pizza Hub
+(2,'Margherita Pizza',350,'Pizza'),
+(2,'Garlic Bread',150,'Starter'),
+(2,'Pasta Alfredo',320,'Pasta'),
+
+-- Dragon Wok
+(3,'Hakka Noodles',250,'Noodles'),
+(3,'Manchurian',220,'Starter'),
+(3,'Spring Roll',180,'Starter'),
+
+-- Royal Biryani
+(4,'Chicken Biryani',420,'Main Course'),
+(4,'Mutton Biryani',520,'Main Course'),
+(4,'Raita',60,'Side Dish');
+
+-- Note:
+-- Restaurant 5 (South Treat)
+-- intentionally has NO menu items.
+
+-- ============================================
+-- Display Tables
+-- ============================================
+
+SELECT * FROM restaurants;
+
+SELECT * FROM menu_items;
+
+-- ============================================
+-- Query 1
+-- INNER JOIN
+-- Restaurant Name, Item Name, Price
+-- ============================================
+
+SELECT
+    r.name AS Restaurant_Name,
+    m.item_name AS Menu_Item,
+    m.price
+FROM restaurants r
+INNER JOIN menu_items m
+ON r.restaurant_id = m.restaurant_id;
+
+-- ============================================
+-- Query 2
+-- LEFT JOIN
+-- Include Restaurants Without Menu Items
+-- ============================================
+
+SELECT
+    r.name AS Restaurant_Name,
+    m.item_name,
+    m.price
+FROM restaurants r
+LEFT JOIN menu_items m
+ON r.restaurant_id = m.restaurant_id;
+
+-- ============================================
+-- Query 3
+-- Create VIEW
+-- Restaurant Menu Summary
+-- ============================================
+
+CREATE VIEW restaurant_menu_summary AS
+SELECT
+    r.restaurant_id,
+    r.name AS Restaurant_Name,
+    COUNT(m.item_id) AS Total_Menu_Items,
+    AVG(m.price) AS Average_Item_Price
+FROM restaurants r
+LEFT JOIN menu_items m
+ON r.restaurant_id = m.restaurant_id
+GROUP BY r.restaurant_id, r.name;
+
+-- ============================================
+-- Display View
+-- ============================================
+
+SELECT * FROM restaurant_menu_summary;
+```
+
+### Expected Output
+
+#### INNER JOIN
+
+| Restaurant Name | Menu Item            | Price |
+| --------------- | -------------------- | ----- |
+| Spice Villa     | Paneer Butter Masala | 280   |
+| Spice Villa     | Butter Naan          | 40    |
+| Spice Villa     | Veg Biryani          | 220   |
+| Pizza Hub       | Margherita Pizza     | 350   |
+| Pizza Hub       | Garlic Bread         | 150   |
+| Pizza Hub       | Pasta Alfredo        | 320   |
+| Dragon Wok      | Hakka Noodles        | 250   |
+| Dragon Wok      | Manchurian           | 220   |
+| Dragon Wok      | Spring Roll          | 180   |
+| Royal Biryani   | Chicken Biryani      | 420   |
+| Royal Biryani   | Mutton Biryani       | 520   |
+| Royal Biryani   | Raita                | 60    |
+
+---
+
+#### LEFT JOIN
+
+| Restaurant Name | Menu Item            | Price |
+| --------------- | -------------------- | ----- |
+| Spice Villa     | Paneer Butter Masala | 280   |
+| ...             | ...                  | ...   |
+| South Treat     | NULL                 | NULL  |
+
+**Note:** `South Treat` appears even though it has no menu items because `LEFT JOIN` returns all rows from the `restaurants` table.
+
+---
+
+#### VIEW: `restaurant_menu_summary`
+
+| Restaurant Name | Total Menu Items | Average Item Price |
+| --------------- | ---------------- | ------------------ |
+| Spice Villa     | 3                | 180.00             |
+| Pizza Hub       | 3                | 273.33             |
+| Dragon Wok      | 3                | 216.67             |
+| Royal Biryani   | 3                | 333.33             |
+| South Treat     | 0                | NULL               |
+
+```
+```

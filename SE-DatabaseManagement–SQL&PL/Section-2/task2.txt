@@ -1,0 +1,109 @@
+```sql
+-- ============================================
+-- TASK 2: Aggregate Revenue Reporting on Orders
+-- ============================================
+
+-- Step 1: Use Existing Database
+USE foodapp_db;
+
+-- Step 2: Create Orders Table
+CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    restaurant_id INT,
+    customer_name VARCHAR(100),
+    total_amount DECIMAL(10,2),
+    order_date DATE,
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
+);
+
+-- Step 3: Insert Sample Orders
+INSERT INTO orders (restaurant_id, customer_name, total_amount, order_date)
+VALUES
+(1, 'Amit', 450.00, '2026-07-01'),
+(1, 'Rahul', 600.00, '2026-07-02'),
+(1, 'Priya', 850.00, '2026-07-05'),
+
+(2, 'Neha', 1200.00, '2026-07-03'),
+(2, 'Rohan', 900.00, '2026-07-06'),
+(2, 'Kiran', 700.00, '2026-07-08'),
+
+(3, 'Anjali', 1500.00, '2026-07-04'),
+(3, 'Vikas', 1800.00, '2026-07-07'),
+(3, 'Meera', 950.00, '2026-07-09'),
+
+(5, 'Arjun', 2200.00, '2026-07-10'),
+(5, 'Sneha', 1600.00, '2026-07-11'),
+(5, 'Riya', 1400.00, '2026-07-12');
+
+-- Display All Orders
+SELECT * FROM orders;
+
+-- ============================================
+-- Query 1:
+-- Total Revenue and Average Order Value
+-- Per Restaurant
+-- ============================================
+
+SELECT
+    restaurant_id,
+    SUM(total_amount) AS total_revenue,
+    AVG(total_amount) AS average_order_value
+FROM orders
+GROUP BY restaurant_id;
+
+-- ============================================
+-- Query 2:
+-- Restaurants with Total Revenue > Rs 5000
+-- ============================================
+
+SELECT
+    restaurant_id,
+    SUM(total_amount) AS total_revenue
+FROM orders
+GROUP BY restaurant_id
+HAVING SUM(total_amount) > 5000;
+
+-- ============================================
+-- Query 3:
+-- Five Most Recent Orders
+-- ============================================
+
+SELECT *
+FROM orders
+ORDER BY order_date DESC
+LIMIT 5;
+```
+
+### Expected Output
+
+#### Query 1: Total Revenue & Average Order Value
+
+| Restaurant ID | Total Revenue (Rs) | Average Order Value (Rs) |
+| ------------- | ------------------ | ------------------------ |
+| 1             | 1900               | 633.33                   |
+| 2             | 2800               | 933.33                   |
+| 3             | 4250               | 1416.67                  |
+| 5             | 5200               | 1733.33                  |
+
+---
+
+#### Query 2: Restaurants with Revenue Greater Than Rs 5000
+
+| Restaurant ID | Total Revenue |
+| ------------- | ------------- |
+| 5             | 5200          |
+
+---
+
+#### Query 3: Five Most Recent Orders
+
+| Order ID | Customer | Restaurant ID | Amount | Order Date |
+| -------- | -------- | ------------- | ------ | ---------- |
+| 12       | Riya     | 5             | 1400   | 2026-07-12 |
+| 11       | Sneha    | 5             | 1600   | 2026-07-11 |
+| 10       | Arjun    | 5             | 2200   | 2026-07-10 |
+| 9        | Meera    | 3             | 950    | 2026-07-09 |
+| 6        | Kiran    | 2             | 700    | 2026-07-08 |
+
+```
+```

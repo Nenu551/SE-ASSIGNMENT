@@ -1,0 +1,179 @@
+```sql id="hll6tz"
+-- ============================================
+-- TASK 4: PL/SQL Order Placement Procedure
+-- MySQL 8.x
+-- ============================================
+
+USE foodapp_db;
+
+-- ============================================
+-- Step 1: Create Customers Table
+-- ============================================
+
+CREATE TABLE customers (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(100) NOT NULL,
+    wallet_balance DECIMAL(10,2) NOT NULL
+);
+
+-- ============================================
+-- Step 2: Insert Sample Customers
+-- ============================================
+
+INSERT INTO customers (customer_name, wallet_balance)
+VALUES
+('Amit', 5000.00),
+('Rahul', 2000.00),
+('Priya', 1000.00),
+('Neha', 7000.00);
+
+-- ============================================
+-- Step 3: Check Orders Table
+-- (Create only if it doesn't already exist)
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    restaurant_id INT,
+    total_amount DECIMAL(10,2),
+    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id),
+
+    FOREIGN KEY (restaurant_id)
+        REFERENCES restaurants(restaurant_id)
+);
+
+-- ============================================
+-- Step 4: Create Stored Procedure
+-- ============================================
+
+DELIMITER $$
+
+CREATE PROCEDURE place_order(
+    IN p_customer_id INT,
+    IN p_restaurant_id INT,
+    IN p_amount DECIMAL(10,2)
+)
+BEGIN
+
+    DECLARE current_balance DECIMAL(10,2);
+
+    START TRANSACTION;
+
+    -- Get Customer Wallet Balance
+    SELECT wallet_balance
+    INTO current_balance
+    FROM customers
+    WHERE customer_id = p_customer_id;
+
+    -- Check Wallet Balance
+    IF current_balance >= p_amount THEN
+
+        -- Deduct Wallet Amount
+        UPDATE customers
+        SET wallet_balance = wallet_balance - p_amount
+        WHERE customer_id = p_customer_id;
+
+        -- Insert Order
+        INSERT INTO orders
+        (
+            customer_id,
+            restaurant_id,
+            total_amount
+        )
+        VALUES
+        (
+            p_customer_id,
+            p_restaurant_id,
+            p_amount
+        );
+
+        COMMIT;
+
+        SELECT 'Order Placed Successfully' AS Message;
+
+    ELSE
+
+        ROLLBACK;
+
+        SELECT 'Insufficient Wallet Balance' AS Message;
+
+    END IF;
+
+END $$
+
+DELIMITER ;
+
+-- ============================================
+-- Step 5: Test Case 1
+-- Valid Order
+-- ============================================
+
+CALL place_order(1, 1, 1200);
+
+-- Check Updated Wallet
+SELECT * FROM customers;
+
+-- Check Order Inserted
+SELECT * FROM orders;
+
+-- ============================================
+-- Step 6: Test Case 2
+-- Insufficient Balance
+-- ============================================
+
+CALL place_order(3, 2, 2500);
+
+-- Wallet Should Remain Unchanged
+SELECT * FROM customers;
+
+-- Orders Table Should Not Have New Record
+SELECT * FROM orders;
+```
+
+## Expected Output
+
+### Test Case 1 (Successful Order)
+
+```text
++----------------------------+
+| Message                    |
++----------------------------+
+| Order Placed Successfully  |
++----------------------------+
+```
+
+**Customer Wallet**
+
+| Customer | Wallet Before | Wallet After |
+| -------- | ------------- | ------------ |
+| Amit     | ₹5000         | ₹3800        |
+
+**Orders Table**
+
+| Order ID | Customer ID | Restaurant ID | Total Amount |
+| -------- | ----------- | ------------- | ------------ |
+| 1        | 1           | 1             | 1200         |
+
+---
+
+### Test Case 2 (Insufficient Balance)
+
+```text
++-------------------------------+
+| Message                       |
++-------------------------------+
+| Insufficient Wallet Balance   |
++-------------------------------+
+```
+
+**Customer Wallet**
+
+| Customer | Wallet Before | Wallet After |
+| -------- | ------------- | ------------ |
+| Priya    | ₹1000         | ₹1000        |
+
+No new row is added to the `orders` table because the transaction is rolled back.
