@@ -1,0 +1,88 @@
+Section A – Concept Application
+Question 1 Scenario:
+You are a junior developer at a fintech startup building a digital wallet app. The project has frequently changing requirements, and the client expects to review working features every two weeks.
+Answer: I would recommend using the Agile methodology for this project because Agile is designed for projects where requirements change frequently. It divides the project into short development cycles called sprints, allowing the team to deliver working features every two weeks and receive client feedback. This helps the team quickly adapt to new requirements and improve the product continuously.
+
+If the team chose the Waterfall model instead, they could face the following risks:
+
+Difficulty handling changing requirements: Since Waterfall follows a fixed sequence, making changes after development has started can be expensive and time-consuming.
+Delayed client feedback: In Waterfall, the client usually reviews the product near the end of the project. If the delivered product does not meet the client's expectations, significant rework may be required, increasing both cost and development time.
+
+--------------------------------------------------------------------------------------
+
+Question 2. Scenario: A teammate pushed incomplete code directly to the main branch, breaking the project before a client demo.
+Answer: - To prevent this problem, the team should adopt a feature branch workflow.
+In this workflow, each developer creates a separate branch for their work instead of making changes directly to the main branch. After completing and testing the feature, the developer creates a Pull Request so other team members can review the code before it is merged into the main branch. This process helps maintain code quality and prevents unfinished code from affecting the main project.
+Two important Git commands are:
+git checkout -b feature-name
+Creates a new branch and switches to it.
+Developers can safely work on new features without affecting the main branch.
+git push origin feature-name
+Uploads the feature branch to the remote repository.
+It allows teammates to review the code through a Pull Request before merging.
+This workflow reduces the chances of breaking the main branch and improves collaboration among team members.
+
+----------------------****************------------------------------------*************
+
+Question 3
+Scenario:
+You are building an internship application form that collects an applicant's name, email, phone number, preferred domain, and resume upload. No JavaScript is allowed.
+Answer:
+The appropriate HTML input types for each field are:
+Field	HTML Input Type
+Applicant Name	text
+Email Address	email
+Phone Number	tel
+Preferred Domain	select (dropdown)
+Resume Upload	file
+To ensure that no field is left empty, I would use the required attribute on every input field.
+For the email field, I would use type="email", which checks whether the entered value follows a valid email format.
+For the resume upload, I could use the accept attribute (for example, .pdf,.doc,.docx) to limit the types of files that users can select.
+However, HTML5 validation alone is not sufficient for production-level applications because users can disable browser validation or send requests directly to the server. Therefore, server-side validation is necessary to verify all user input, ensure data security, and protect the application from invalid or malicious data.
+
+-------------------------******************----------------------*************
+
+Question 4
+Scenario:
+A news portal should display articles in a 3-column layout on desktop and 1-column layout on mobile using only Bootstrap's grid system.
+Answer:
+Bootstrap uses a 12-column responsive grid system. Developers assign column classes to elements, and Bootstrap automatically adjusts the layout according to the screen size without requiring custom media queries.
+The appropriate Bootstrap class combination is:
+
+<div class="col-12 col-lg-4">
+
+Explanation:
+
+col-12
+On small screens (mobile), the column occupies all 12 grid columns, so each article appears on a separate row.
+col-lg-4
+On large screens, each article occupies 4 of the 12 columns.
+Since 12 ÷ 4 = 3, three articles are displayed in one row.
+
+This combination automatically creates a single-column layout on mobile devices and a three-column layout on desktop screens.
+
+-------------------------*************************---------------------------------------------
+
+Question 5. Scenario: A C program must store rainfall data for 30 days, calculate the monthly average, and identify the days with above-average rainfall.
+Answer:
+An array is the most suitable data structure because it stores multiple values of the same data type using a single variable name. Instead of creating 30 separate variables, an array makes the program shorter, easier to maintain, and allows all values to be processed using loops.
+The program should follow these two steps:
+Calculate the average
+Store all 30 rainfall values in an array.
+Use a loop to calculate the total rainfall.
+Divide the total by 30 to find the average.
+Find above-average days
+Use another loop to compare each rainfall value with the calculated average.
+Print the day numbers where the rainfall is greater than the average.
+These two steps cannot be completed in a single loop because the average is not known until all 30 rainfall values have been entered and the total has been calculated.
+
+----------------------------------********************************-------------------------
+
+Question 6
+Scenario:
+A C program uses a pointer to traverse a string. The program crashes when the user presses Enter without typing a name.
+Answer:
+The program crashes because, when the user enters an empty string, the pointer may be dereferenced without checking whether it points to a valid character. Attempting to access memory without proper validation can cause undefined behavior or a program crash.
+Before dereferencing the pointer, the program should check whether the string is empty by verifying that the first character is '\0' (the null terminator). If the first character is '\0', the program should display an appropriate message and avoid traversing the string.
+Pointer traversal moves the pointer from one character to the next using pointer arithmetic, while array indexing accesses characters using positions such as str[0], str[1], and so on.
+Using array indexing generally makes the empty-input case easier to detect because checking str[0] == '\0' is simple and straightforward. Pointer traversal is efficient but requires careful validation before dereferencing the pointer.
