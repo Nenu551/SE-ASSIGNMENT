@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f1f3f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ============================
+           Product Card (Desktop)
+        ============================ */
+
+.product-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 800px;
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-image img {
+    width: 250px;
+    border-radius: 10px;
+}
+
+.product-details {
+    flex: 1;
+}
+
+.product-details h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.product-details p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.price {
+    color: green;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+button {
+    margin-top: 15px;
+    background: #2874F0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1558c5;
+}
+
+/* =====================================
+           Breakpoint 1200px
+        ===================================== */
+
+@media only screen and (max-width:1200px) {
+    .product-card {
+        padding: 22px;
+    }
+
+    .product-details h2 {
+        font-size: 25px;
+    }
+
+    .product-details p {
+        font-size: 17px;
+    }
+}
+
+/* =====================================
+           Breakpoint 900px
+        ===================================== */
+
+@media only screen and (max-width:900px) {
+    .product-card {
+        width: 100%;
+        padding: 18px;
+    }
+
+    .product-image img {
+        width: 220px;
+    }
+
+    .product-details h2 {
+        font-size: 22px;
+    }
+
+    .product-details p {
+        font-size: 16px;
+    }
+}
+
+/* =====================================
+           Breakpoint 600px
+           Horizontal → Vertical Layout
+        ===================================== */
+
+@media only screen and (max-width:600px) {
+    .product-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .product-image img {
+        width: 100%;
+    }
+
+    .product-details h2 {
+        font-size: 20px;
+    }
+
+    .product-details p {
+        font-size: 14px;
+    }
+
+    .price {
+        font-size: 20px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
