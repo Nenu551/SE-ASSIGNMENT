@@ -1,0 +1,45 @@
+1. Name 5 IT job roles and write one line about what each role does.
+Answer: - 
+    IT Job Role	                                                    What They Do
+Software Developer	                                    Designs, writes, and maintains software applications.
+Web Developer	                                        Builds and maintains websites and web applications.
+Software Tester (QA Engineer)	                        Tests software to find bugs and ensure it works correctly.
+UI/UX Designer	                                        Designs user interfaces and improves the user experience of applications.
+Data Analyst	                                        Collects, analyzes, and interprets data to help businesses make decisions.
+
+2. List 3 product companies and 3 service companies with one example of work each does.
+Answer :- 
+Product Companies
+Company	                                                           Example of Work
+Microsoft	                                            Develops Windows operating system and Microsoft Office.
+Google	                                                Creates products like Google Search, Gmail, and Android.
+Adobe	                                                Develops creative software such as Photoshop and Illustrator.
+
+Service Companies
+Company	                                                            Example of Work
+Tata Consultancy Services (TCS)	                        Provides software development and IT consulting services.
+Infosys	                                                Offers application development and digital transformation services.
+Wipro	                                                Provides cloud computing, cybersecurity, and IT support services.
+
+3. Write the full forms and one-line use of: GitHub, Slack, Jira, IDE, API.
+Answer:- 
+                Term	                                                            Full Form	Use
+        GitHub	                                                Git Hub (Git itself is not an acronym)	Used to host, manage, and collaborate on source code using Git.
+        Slack	                                                Slack is not an acronym	Used for team communication and collaboration.
+        Jira	                                                Jira is not an acronym	Used to track projects, tasks, bugs, and software development work.
+        IDE	                                                    Integrated Development Environment	Used to write, edit, run, and debug code in one application.
+        API	                                                    Application Programming Interface	Allows different software applications to communicate with each other.
+
+4. Name any 5 programming languages and mention one popular use case for each.
+Answer:- 
+Programming Language	                                                              Popular Use Case
+JavaScript	                                                    Web development and interactive websites.
+Python	                                                        Data science, AI, and automation.
+Java	                                                        Android app development and enterprise applications.
+C++	                                                            Game development and system programming.
+PHP	                                                            Backend web development and dynamic websites.
+
+5. What is the difference between a developer and a tester? (2 lines)
+Answer:- 
+Developer: A developer writes, develops, and maintains software or applications based on project requirements.
+Tester: A tester checks the software for bugs, verifies that it works correctly, and ensures it meets quality standards before release.
