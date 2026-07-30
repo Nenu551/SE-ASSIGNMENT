@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Links & Gamer Bio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ===========================
+     Gamer Profile
+=========================== -->
+    <div class="profile">
+        <img src="https://via.placeholder.com/180" alt="Avatar">
+        <div class="profile-info">
+            <h1>ShadowHunter</h1>
+            <p>
+                Professional Gamer | FPS Lover | Live Every Weekend
+            </p>
+            <div class="links">
+                <a href="#" class="twitch">
+                    <i class="bi bi-twitch"></i> Twitch
+                </a>
+                <a href="#" class="discord">
+                    <i class="bi bi-discord"></i> Discord
+                </a>
+                <a href="#" class="steam">
+                    <i class="bi bi-steam"></i> Steam
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- ===========================
+     Music Form
+========================== -->
+    <form id="musicLinksForm">
+        <h2>Add Music Profiles</h2>
+        <div class="input-group">
+            <i class="bi bi-spotify"></i>
+            <input type="url" id="spotify" placeholder="Spotify Profile URL">
+        </div>
+        <div class="input-group">
+            <i class="bi bi-youtube"></i>
+            <input type="url" id="youtube" placeholder="YouTube Music URL">
+        </div>
+        <div class="input-group">
+            <i class="bi bi-apple"></i>
+            <input type="url" id="apple" placeholder="Apple Music URL">
+        </div>
+        <button type="submit">
+            Create Preview\
+        </button>
+    </form>
+    <!-- Preview -->
+    <div id="preview" class="preview"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
