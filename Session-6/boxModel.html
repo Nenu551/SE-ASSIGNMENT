@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Layout Assignment</title>
+
+    <style>
+        /* =======================================
+   Reusable Class
+   This class avoids repeating the same
+   margin and padding values throughout
+   the project, making the CSS easier to
+   maintain and update.
+======================================= */
+
+        .spacing {
+            margin: 20px;
+            padding: 20px;
+        }
+
+        /* =======================================
+   Task 1 - Zomato Restaurant Card
+======================================= */
+
+        .restaurant-card {
+            width: 300px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin: 20px;
+            padding: 20px;
+            background: #fff8f8;
+        }
+
+        .restaurant-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .restaurant-card p {
+            margin: 8px 0;
+        }
+
+        .rating {
+            border-top: 1px solid gray;
+            padding-top: 10px;
+            margin-top: 10px;
+            color: green;
+            font-weight: bold;
+        }
+
+        /* =======================================
+   Task 2 - Flipkart Product Tile
+======================================= */
+
+        .product {
+            width: 250px;
+            border: 1px solid gray;
+            padding: 15px;
+            margin: 20px;
+        }
+
+        .product img {
+            display: block;
+            width: 100%;
+        }
+
+        .product-name {
+            display: block;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .price {
+            display: inline-block;
+            margin-top: 8px;
+            color: green;
+            font-weight: bold;
+        }
+
+        .hide-price {
+            display: none;
+        }
+
+        /* =======================================
+   Task 3 - WhatsApp Fixed Button
+======================================= */
+
+        .whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* =======================================
+   Task 4 - Movie Poster Grid
+======================================= */
+
+        .movie-grid {
+            display: flex;
+            gap: 20px;
+            margin: 20px;
+        }
+
+        .poster {
+            position: relative;
+            width: 180px;
+        }
+
+        .poster img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: red;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ===================================
+     Task 1
+=================================== -->
+
+    <h1>Zomato Restaurant Card</h1>
+
+    <div class="restaurant-card spacing">
+
+        <h2>Barbeque Nation</h2>
+
+        <p><strong>Cuisine:</strong> North Indian, BBQ</p>
+
+        <div class="rating">
+            ⭐ 4.5 / 5
+        </div>
+
+    </div>
+
+    <hr>
+
+    <!-- ===================================
+     Task 2
+=================================== -->
+
+    <h1>Flipkart Product Tile</h1>
+
+    <div class="product spacing">
+
+        <img src="https://www.hp.com/in-en/shop/media/catalog/product/d/e/deso_14_ngai_ob5_cs_saharasilver_wlan_nt_fhd_ircam_backlit_oled_catalog_front_5886000.png?store=in-en&image-type=image&auto=avif&quality=100&format=jpg&bg-color=ffffff&type=image-product&width=244&fit=bounds"
+            alt="Laptop">
+
+        <span class="product-name">
+            HP Laptop
+        </span>
+
+        <!-- Remove hide-price class to show price -->
+        <span class="price hide-price">
+            ₹54,999
+        </span>
+
+    </div>
+
+    <p>
+        Remove the <strong>hide-price</strong> class from the price element to display the price.
+    </p>
+
+    <hr>
+
+    <!-- ===================================
+     Task 4
+=================================== -->
+
+    <h1>BookMyShow Movie Posters</h1>
+
+    <div class="movie-grid">
+
+        <div class="poster">
+
+            <span class="badge">
+                NEW
+            </span>
+
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_XU19Xbp-PIKFbwxHih1adGVStzKfcZjkzES_M-WauINx-oUy4Y-JadM&s=10/180x260"
+                alt="Movie">
+
+        </div>
+
+        <div class="poster">
+
+            <img src="https://media-cache.cinematerial.com/p/500x/zi91w557/peddi-indian-movie-poster.jpg?v=1743053908/180x260"
+                alt="Movie">
+
+        </div>
+
+        <div class="poster">
+
+            <img src="https://m.media-amazon.com/images/M/MV5BOWNjYWM3NWItOGE0ZS00MWRjLThiZWEtYjc4ZmNmMmU5ZTVmXkEyXkFqcGc@._V1_.jpg/180x260"
+                alt="Movie">
+
+        </div>
+
+    </div>
+
+    <!-- ===================================
+     Task 3
+=================================== -->
+
+    <div class="whatsapp">
+        💬 Chat
+    </div>
+
+</body>
+
+</html>
