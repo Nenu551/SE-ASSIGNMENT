@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Utilities Assignment</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS (Loaded AFTER Bootstrap) -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="page" class="container bg-light text-dark p-4">
+
+        <!-- ========================================= -->
+        <!-- Theme Switch Button -->
+        <!-- ========================================= -->
+
+        <div class="text-end mb-4">
+            <button class="btn btn-secondary" onclick="toggleTheme()">
+                Toggle Theme
+            </button>
+        </div>
+
+        <!-- ========================================= -->
+        <!-- Task 1 -->
+        <!-- ========================================= -->
+
+        <h2 class="mb-4">Flipkart Product</h2>
+
+        <div class="card m-5 p-4">
+
+            <img src="https://via.placeholder.com/250x180" class="card-img-top" alt="Laptop">
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    HP Pavilion Laptop
+                </h5>
+
+            </div>
+
+        </div>
+
+        <!-- ========================================= -->
+        <!-- Task 2 -->
+        <!-- ========================================= -->
+
+        <h2 class="mt-5 mb-3">Movie Review</h2>
+
+        <div class="card p-4">
+
+            <h2 class="display-6 fw-bold">
+                Avengers: Endgame
+            </h2>
+
+            <p class="fs-4 fw-semibold text-warning">
+                ⭐ 4.8 / 5
+            </p>
+
+            <p class="fs-6 fw-light">
+                One of the greatest superhero movies ever made with
+                outstanding action, emotional storytelling, and
+                unforgettable performances.
+            </p>
+
+        </div>
+
+        <!-- ========================================= -->
+        <!-- Task 3 -->
+        <!-- ========================================= -->
+
+        <h2 class="mt-5 mb-3">Zomato Restaurants</h2>
+
+        <div class="card p-3 mb-3">
+
+            <h4>Barbeque Nation</h4>
+
+            <span class="badge bg-success">
+                Rating 4.5
+            </span>
+
+            <span class="badge bg-warning text-dark">
+                20% OFF
+            </span>
+
+            <span class="badge bg-success">
+                Open
+            </span>
+
+        </div>
+
+        <div class="card p-3">
+
+            <h4>Pizza Hut</h4>
+
+            <span class="badge bg-success">
+                Rating 4.3
+            </span>
+
+            <span class="badge bg-danger">
+                No Offer
+            </span>
+
+            <span class="badge bg-secondary">
+                Closed
+            </span>
+
+        </div>
+
+        <!-- ========================================= -->
+        <!-- Task 4 -->
+        <!-- ========================================= -->
+
+        <h2 class="mt-5 mb-3">
+            BookMyShow
+        </h2>
+
+        <button class="btn btn-primary">
+            Book Ticket
+        </button>
+
+    </div>
+
+    <script>
+
+        function toggleTheme() {
+
+            const page = document.getElementById("page");
+
+            page.classList.toggle("bg-light");
+            page.classList.toggle("bg-dark");
+
+            page.classList.toggle("text-dark");
+            page.classList.toggle("text-light");
+
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
